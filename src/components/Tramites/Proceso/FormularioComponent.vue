@@ -127,6 +127,7 @@ import { mapActions } from "vuex";
 
 let procedure = {
   title: "",
+  procedureId: null,
   userId: 1,
   categoryId: null,
   statusId: 1,
@@ -161,7 +162,7 @@ export default {
     procedure.categoryId = parseInt(this.$route.params.categoriaId);
     procedure.title = this.title;
     procedure.procedureId = this.procedureId;
-    procedure.representativeId = 1;
+    procedure.representativeId = localStorage.getItem("id");
   },
   methods: {
     ...mapActions(["saveP"]),
@@ -201,21 +202,6 @@ export default {
           },
         ],
       };
-
-      // let p = [
-      //   {
-      //     question: this.questionProp[0].question[this.paso].id,
-      //     options: [
-      //       {
-      //         questionOption:
-      //           this.questionProp[0].question[this.paso].question_options[
-      //             choice
-      //           ].id,
-      //         answer: optionTitle,
-      //       },
-      //     ],
-      //   },
-      // ];
 
       procedure.questions.push(q);
 
